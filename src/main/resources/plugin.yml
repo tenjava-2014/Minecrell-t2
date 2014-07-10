@@ -1,0 +1,3 @@
+name: Minecrell-t2
+main: com.tenjava.entries.Minecrell.t2.TenJava
+version: '${project.version}'
