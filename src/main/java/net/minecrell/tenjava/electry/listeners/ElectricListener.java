@@ -2,10 +2,12 @@ package net.minecrell.tenjava.electry.listeners;
 
 import net.minecrell.tenjava.electry.Electry;
 import net.minecrell.tenjava.electry.Items;
+import net.minecrell.tenjava.electry.electrics.SolarCell;
 import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 import net.minecrell.tenjava.electry.storage.RuntimeMetaStorage;
 
 import org.bukkit.Chunk;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
@@ -24,9 +26,10 @@ public class ElectricListener extends AbstractListener {
     public void onBlockPlace(BlockPlaceEvent event) {
         ItemStack item = event.getItemInHand();
         if (Items.isElectryItem(item)) {
-            BlockState state = event.getBlockPlaced().getState();
+            Block block = event.getBlockPlaced();
+            BlockState state = block.getState();
             state.setMetadata(Items.META_ID, new RuntimeMetaStorage<>(plugin,
-                    plugin.getRegistry().forItem(event.getItemInHand().getType())));
+                    plugin.getRegistry().forItem(event.getItemInHand().getType(), block)));
             event.getPlayer().sendMessage("You have placed an Electry item!");
         }
     }
@@ -72,6 +75,9 @@ public class ElectricListener extends AbstractListener {
         if (event.getClickedBlock().hasMetadata(Items.META_ID)) {
             ElectricBlock block = ((RuntimeMetaStorage<?>) event.getClickedBlock().getMetadata(Items.META_ID).get
                     (0)).value();
+            if (block instanceof SolarCell) {
+                event.getPlayer().sendMessage(String.valueOf(((SolarCell) block).getLightLevel()));
+            }
             event.getPlayer().sendMessage("That is a " + block.getType().getName());
         }
     }

@@ -14,7 +14,6 @@ public final class Items {
     public static final String ITEM_ID = "Electry";
     public static final String META_ID = ITEM_ID + "Storage";
 
-
     public static ItemStack createItem(Electric electric, ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(electric.getName());

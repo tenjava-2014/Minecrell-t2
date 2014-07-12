@@ -3,14 +3,19 @@ package net.minecrell.tenjava.electry.electrics;
 import net.minecrell.tenjava.electry.electrics.block.ElectricGenerator;
 import net.minecrell.tenjava.electry.electrics.registry.DefaultElectric;
 
-public class SolarCell extends ElectricGenerator {
-    private int lightLevel;
+import org.bukkit.block.Block;
 
-    public SolarCell() {
-        super(DefaultElectric.SOLAR_CELL);
+public class SolarCell extends ElectricGenerator {
+    public SolarCell(Block block) {
+        super(block, DefaultElectric.SOLAR_CELL);
+    }
+
+    @Override
+    public int getEfficiency() {
+        return this.getLightLevel() * 10;
     }
 
     public int getLightLevel() {
-        return lightLevel;
+        return block.getLightFromSky();
     }
 }

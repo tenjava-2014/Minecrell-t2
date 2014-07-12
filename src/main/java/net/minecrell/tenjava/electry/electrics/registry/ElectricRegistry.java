@@ -14,6 +14,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 
 public class ElectricRegistry {
     private final Multimap<ElectricType, Electric> electrics =
@@ -36,8 +37,8 @@ public class ElectricRegistry {
         return Collections.unmodifiableCollection(electrics.values());
     }
 
-    public ElectricBlock forItem(Material material) {
+    public ElectricBlock forItem(Material material, Block block) {
         Electric electric = itemLookup.get(material);
-        return electric != null ? electric.create() : null;
+        return electric != null ? electric.create(block) : null;
     }
 }

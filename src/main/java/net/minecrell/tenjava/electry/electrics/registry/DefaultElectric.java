@@ -10,6 +10,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -31,8 +32,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public ElectricBlock create() {
-            return new SolarCell();
+        public SolarCell create(Block block) {
+            return new SolarCell(block);
         }
     },
 
@@ -49,8 +50,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public ElectricBlock create() {
-            return new ElectricFurnace();
+        public ElectricFurnace create(Block block) {
+            return new ElectricFurnace(block);
         }
     },
 
@@ -68,8 +69,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public ElectricBlock create() {
-            return new RedstoneCable();
+        public RedstoneCable create(Block block) {
+            return new RedstoneCable(block);
         }
     },
 
@@ -86,8 +87,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public ElectricBlock create() {
-            return new TripwireCable();
+        public TripwireCable create(Block block) {
+            return new TripwireCable(block);
         }
     };
 

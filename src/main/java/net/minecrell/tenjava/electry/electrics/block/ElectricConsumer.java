@@ -2,18 +2,14 @@ package net.minecrell.tenjava.electry.electrics.block;
 
 import net.minecrell.tenjava.electry.electrics.registry.Electric;
 
+import org.bukkit.block.Block;
+
 public abstract class ElectricConsumer extends ElectricBlock {
     private int consumption;
 
-    protected ElectricConsumer(Electric type) {
-        super(type);
+    protected ElectricConsumer(Block block, Electric type) {
+        super(block, type);
     }
 
-    public int getConsumption() {
-        return consumption;
-    }
-
-    public void setConsumption(int consumption) {
-        this.consumption = consumption;
-    }
+    public abstract int getConsumption();
 }
