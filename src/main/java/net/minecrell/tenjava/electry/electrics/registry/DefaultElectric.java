@@ -140,8 +140,8 @@ public enum DefaultElectric implements Electric {
         return this.getName();
     }
 
-    public static void registerRecipes(Server server) {
-        for (DefaultElectric electric : values())
-            server.addRecipe(electric.getRecipe());
+    public static void register(ElectricRegistry registry) {
+        for (Electric electric : values())
+            registry.register(electric);
     }
 }
