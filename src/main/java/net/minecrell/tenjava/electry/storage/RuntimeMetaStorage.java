@@ -5,8 +5,8 @@ import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;
 
-public class ElectricMetaStorage<T extends ElectricBlock> extends FixedMetadataValue {
-    public ElectricMetaStorage(Plugin plugin, T electric) {
+public class RuntimeMetaStorage<T extends ElectricBlock> extends FixedMetadataValue {
+    public RuntimeMetaStorage(Plugin plugin, T electric) {
         super(plugin, electric);
     }
 
