@@ -3,6 +3,7 @@ package net.minecrell.tenjava.electry;
 import net.minecrell.tenjava.electry.electrics.registry.DefaultElectric;
 import net.minecrell.tenjava.electry.electrics.registry.ElectricRegistry;
 import net.minecrell.tenjava.electry.listeners.ElectricListener;
+import net.minecrell.tenjava.electry.listeners.FurnaceListener;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -14,6 +15,7 @@ public class Electry extends JavaPlugin {
         this.registry = new ElectricRegistry(this);
         DefaultElectric.register(registry);
         new ElectricListener(this).register();
+        new FurnaceListener(this).register();
 
         // For the people complaining about such messages: CraftBukkit does only display that it IS enabling the
         // plugin and not that the plugin was SUCCESSFULLY enabled. Therefore this message just says that the
