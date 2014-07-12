@@ -1,9 +1,10 @@
-package net.minecrell.tenjava.electry.electrics.base;
+package net.minecrell.tenjava.electry.electrics.registry;
 
 import net.minecrell.tenjava.electry.electrics.ElectricFurnace;
 import net.minecrell.tenjava.electry.electrics.RedstoneCable;
 import net.minecrell.tenjava.electry.electrics.SolarCell;
 import net.minecrell.tenjava.electry.electrics.TripwireCable;
+import net.minecrell.tenjava.electry.electrics.base.ElectricBlock;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
@@ -16,8 +17,8 @@ import org.bukkit.inventory.ShapedRecipe;
 
 import static net.minecrell.tenjava.electry.Items.createItem;
 
-public enum Electrics {
-    SOLAR_CELL ("Solar Cell", SolarCell.class, Material.DAYLIGHT_DETECTOR) {
+public enum DefaultElectric implements Electric {
+    SOLAR_CELL ("Solar Cell", SolarCell.class, ElectricType.GENERATOR, Material.DAYLIGHT_DETECTOR) {
         @Override
         protected Recipe createRecipe(Material material) {
             return new ShapedRecipe(createItem(this, new ItemStack(material))).shape(
@@ -29,9 +30,14 @@ public enum Electrics {
                     .setIngredient('D', Material.DIAMOND).setIngredient('R', Material.REDSTONE)
                     .setIngredient('W', Material.WOOD_STEP);
         }
+
+        @Override
+        public ElectricBlock create() {
+            return new SolarCell();
+        }
     },
 
-    ELECTRIC_FURNACE ("Electric Furnace", ElectricFurnace.class, Material.FURNACE) {
+    ELECTRIC_FURNACE ("Electric Furnace", ElectricFurnace.class, ElectricType.CONSUMER, Material.FURNACE) {
         @Override
         protected Recipe createRecipe(Material material) {
             return new ShapedRecipe(createItem(this, new ItemStack(material))).shape(
@@ -42,10 +48,15 @@ public enum Electrics {
                     .setIngredient('I', Material.IRON_INGOT)
                     .setIngredient('R', Material.REDSTONE);
         }
+
+        @Override
+        public ElectricBlock create() {
+            return new ElectricFurnace();
+        }
     },
 
     // TODO: One of the cables should be better
-    REDSTONE_CABLE ("Redstone Cable", RedstoneCable.class, Material.REDSTONE) {
+    REDSTONE_CABLE ("Redstone Cable", RedstoneCable.class, ElectricType.TRANSPORTER, Material.REDSTONE) {
         @Override
         protected Recipe createRecipe(Material material) {
             return new ShapedRecipe(createItem(this, new ItemStack(material, 6))).shape(
@@ -56,9 +67,14 @@ public enum Electrics {
                     .setIngredient('R', Material.REDSTONE)
                     .setIngredient('S', Material.STRING);
         }
+
+        @Override
+        public ElectricBlock create() {
+            return new RedstoneCable();
+        }
     },
 
-    TRIPWIRE_CABLE ("Tripwire Cable", TripwireCable.class, Material.STRING) {
+    TRIPWIRE_CABLE ("Tripwire Cable", TripwireCable.class, ElectricType.TRANSPORTER, Material.STRING) {
         @Override
         protected Recipe createRecipe(Material material) {
             return new ShapedRecipe(createItem(this, new ItemStack(material, 6))).shape(
@@ -69,15 +85,22 @@ public enum Electrics {
                     .setIngredient('S', Material.STRING)
                     .setIngredient('R', Material.REDSTONE);
         }
+
+        @Override
+        public ElectricBlock create() {
+            return new TripwireCable();
+        }
     };
 
     private final String name;
-    private final Class<? extends Electric> electric;
+    private final ElectricType type;
+    private final Class<? extends ElectricBlock> electric;
 
     private final Material material;
     private final Recipe recipe;
 
-    Electrics(String name, Class<? extends Electric> electric, Material material) {
+    DefaultElectric(String name, Class<? extends ElectricBlock> electric, ElectricType type, Material material) {
+        this.type = type;
         Preconditions.checkArgument(!Strings.isNullOrEmpty(name), "name cannot be empty");
         this.name = name;
         this.electric = Preconditions.checkNotNull(electric);
@@ -87,18 +110,27 @@ public enum Electrics {
 
     protected abstract Recipe createRecipe(Material material);
 
+    @Override
     public String getName() {
         return name;
     }
 
-    public Class<? extends Electric> getElectric() {
+    @Override
+    public ElectricType getType() {
+        return type;
+    }
+
+    @Override
+    public Class<? extends ElectricBlock> getElectric() {
         return electric;
     }
 
+    @Override
     public Material getMaterial() {
         return material;
     }
 
+    @Override
     public Recipe getRecipe() {
         return recipe;
     }
@@ -109,7 +141,7 @@ public enum Electrics {
     }
 
     public static void registerRecipes(Server server) {
-        for (Electrics electric : values())
+        for (DefaultElectric electric : values())
             server.addRecipe(electric.getRecipe());
     }
 }

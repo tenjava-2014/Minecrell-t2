@@ -1,6 +1,6 @@
 package net.minecrell.tenjava.electry.electrics.base;
 
-public abstract class ElectricGenerator extends Electric {
+public abstract class ElectricGenerator extends ElectricBlock {
     private int efficiency;
 
     public int getEfficiency() {

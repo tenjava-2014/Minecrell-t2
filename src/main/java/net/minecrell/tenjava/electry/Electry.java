@@ -1,14 +1,16 @@
 package net.minecrell.tenjava.electry;
 
-import net.minecrell.tenjava.electry.electrics.base.Electrics;
+import net.minecrell.tenjava.electry.electrics.registry.ElectricRegistry;
 import net.minecrell.tenjava.electry.listeners.ElectricListener;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Electry extends JavaPlugin {
+    private ElectricRegistry registry;
+
     @Override
     public void onEnable() {
-        Electrics.registerRecipes(this.getServer());
+        this.registry = new ElectricRegistry(this);
         new ElectricListener(this).register();
 
         // For the people complaining about such messages: CraftBukkit does only display that it IS enabling the
@@ -20,5 +22,9 @@ public class Electry extends JavaPlugin {
     @Override
     public void onDisable() {
         this.getLogger().info(this.getDescription().getFullName() + " disabled.");
+    }
+
+    public ElectricRegistry getRegistry() {
+        return registry;
     }
 }

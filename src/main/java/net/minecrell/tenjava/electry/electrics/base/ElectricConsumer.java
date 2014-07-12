@@ -1,6 +1,6 @@
 package net.minecrell.tenjava.electry.electrics.base;
 
-public abstract class ElectricConsumer extends Electric {
+public abstract class ElectricConsumer extends ElectricBlock {
     private int consumption;
 
     public int getConsumption() {

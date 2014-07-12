@@ -24,7 +24,8 @@ public class ElectricListener extends AbstractListener {
         ItemStack item = event.getItemInHand();
         if (Items.isElectryItem(item)) {
             BlockState state = event.getBlockPlaced().getState();
-            state.setMetadata(Items.META_ID, new ElectricMetaStorage<>(plugin, new RedstoneCable()));
+            state.setMetadata(Items.META_ID, new ElectricMetaStorage<>(plugin,
+                    plugin.getRegistry().forItem(event.getItemInHand().getType())));
             event.getPlayer().sendMessage("You have placed an Electry item!");
         }
     }

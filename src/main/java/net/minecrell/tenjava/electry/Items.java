@@ -1,6 +1,6 @@
 package net.minecrell.tenjava.electry;
 
-import net.minecrell.tenjava.electry.electrics.base.Electrics;
+import net.minecrell.tenjava.electry.electrics.registry.DefaultElectric;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +15,7 @@ public final class Items {
     public static final String META_ID = ITEM_ID + "Storage";
 
 
-    public static ItemStack createItem(Electrics electric, ItemStack item) {
+    public static ItemStack createItem(DefaultElectric electric, ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(electric.getName());
         List<String> lore = meta.getLore();
