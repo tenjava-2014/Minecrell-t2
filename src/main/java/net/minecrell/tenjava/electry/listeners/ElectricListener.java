@@ -5,6 +5,7 @@ import net.minecrell.tenjava.electry.Items;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.world.WorldSaveEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class ElectricListener extends AbstractListener {
@@ -18,5 +19,11 @@ public class ElectricListener extends AbstractListener {
         if (Items.isElectryItem(item)) {
             event.getPlayer().sendMessage("You have placed an electry item!");
         }
+    }
+
+    @EventHandler
+    public void onWorldSave(WorldSaveEvent event) {
+        plugin.getLogger().info("Saving Electry blocks...");
+        // TODO: Save to disk
     }
 }

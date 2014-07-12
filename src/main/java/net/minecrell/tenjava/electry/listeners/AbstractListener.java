@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 
 public abstract class AbstractListener implements Listener {
-    private final Electry plugin;
+    protected final Electry plugin;
 
     protected AbstractListener(Electry plugin) {
         this.plugin = Preconditions.checkNotNull(plugin, "plugin");
