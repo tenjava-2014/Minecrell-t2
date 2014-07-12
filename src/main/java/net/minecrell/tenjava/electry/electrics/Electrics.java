@@ -7,14 +7,10 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public enum Electrics {
-    SOLAR_CELL("Solar Cell", SolarCell.class) {
+    SOLAR_CELL ("Solar Cell", SolarCell.class) {
         @Override
         protected ItemStack createItem() {
-            ItemStack item = new ItemStack(Material.DAYLIGHT_DETECTOR);
-            ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(this.getName());
-            item.setItemMeta(meta);
-            return item;
+            return setItemName(new ItemStack(Material.DAYLIGHT_DETECTOR));
         }
 
         @Override
@@ -27,6 +23,24 @@ public enum Electrics {
                     .setIngredient('G', Material.GLASS)
                     .setIngredient('D', Material.DIAMOND).setIngredient('R', Material.REDSTONE)
                     .setIngredient('W', Material.WOOD_STEP);
+        }
+    },
+
+    ELECTRIC_FURNACE ("Electric Furnace", ElectricFurnace.class) {
+        @Override
+        protected ItemStack createItem() {
+            return setItemName(new ItemStack(Material.FURNACE));
+        }
+
+        @Override
+        protected Recipe createRecipe(ItemStack item) {
+            return new ShapedRecipe(item).shape(
+                    "III", // IRON |   IRON   | IRON
+                    "IRI", // IRON | REDSTONE | IRON
+                    "III"  // IRON |   IRON   | IRON
+            )
+                    .setIngredient('I', Material.IRON_INGOT)
+                    .setIngredient('R', Material.REDSTONE);
         }
     };
 
@@ -44,10 +58,23 @@ public enum Electrics {
     }
 
     protected abstract ItemStack createItem();
+
+    protected ItemStack setItemName(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(this.getName());
+        item.setItemMeta(meta);
+        return item;
+    }
+
+
     protected abstract Recipe createRecipe(ItemStack item);
 
     public String getName() {
         return name;
+    }
+
+    public Class<? extends Electric> getElectric() {
+        return electric;
     }
 
     public ItemStack getItem() {
