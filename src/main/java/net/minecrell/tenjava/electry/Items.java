@@ -17,9 +17,7 @@ public final class Items {
 
     public static boolean isElectryItem(ItemStack item) {
         if (item == null) return false;
-        ItemMeta meta = item.getItemMeta();
-        if (meta == null) return false;
-        List<String> lore = meta.getLore();
+        List<String> lore = item.getItemMeta().getLore();
         return lore.size() > 0 && lore.get(0).equals(ITEM_IDENTIFICATION);
     }
 }
