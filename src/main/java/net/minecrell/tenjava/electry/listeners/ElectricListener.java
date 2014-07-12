@@ -9,6 +9,8 @@ import org.bukkit.Chunk;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.event.world.WorldSaveEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -17,26 +19,48 @@ public class ElectricListener extends AbstractListener {
         super(plugin);
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onBlockPlace(BlockPlaceEvent event) {
         ItemStack item = event.getItemInHand();
         if (Items.isElectryItem(item)) {
             BlockState state = event.getBlockPlaced().getState();
             state.setMetadata(Items.META_ID, new ElectricMetaStorage<>(plugin, new RedstoneCable()));
-            event.getPlayer().sendMessage("You have placed an electry item!");
+            event.getPlayer().sendMessage("You have placed an Electry item!");
+        }
+    }
+
+    private void save(Chunk chunk) {
+        save(chunk, false);
+    }
+
+    private void save(Chunk chunk, boolean unload) {
+        for (BlockState state : chunk.getTileEntities()) {
+            if (state.hasMetadata(Items.META_ID)) {
+                plugin.getLogger().fine("Saving: " + state.getBlock().getLocation());
+                // TODO: Save to disk
+                if (unload) {
+                    plugin.getLogger().fine("And unloaded!");
+                    state.removeMetadata(Items.META_ID, plugin);
+                }
+            }
         }
     }
 
     @EventHandler
+    public void onChunkLoad(ChunkLoadEvent event) {
+        // TODO: Load from disk
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onChunkUnload(ChunkUnloadEvent event) {
+        save(event.getChunk(), true);
+    }
+
+    @EventHandler
     public void onWorldSave(WorldSaveEvent event) {
-        plugin.getLogger().info("Saving Electry blocks...");
-        // TODO: Save to disk
-        for (Chunk chunk : event.getWorld().getLoadedChunks()) {
-            for (BlockState state : chunk.getTileEntities()) {
-                if (state.hasMetadata(Items.META_ID)) {
-                    plugin.getLogger().info("Yay!!");
-                }
-            }
-        }
+        plugin.getLogger().info("Saving electrics...");
+        for (Chunk chunk : event.getWorld().getLoadedChunks())
+            save(chunk);
+        plugin.getLogger().info("Done!");
     }
 }
