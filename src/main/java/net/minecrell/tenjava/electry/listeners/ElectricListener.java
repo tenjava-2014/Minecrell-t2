@@ -29,7 +29,7 @@ public class ElectricListener extends AbstractListener {
             Block block = event.getBlockPlaced();
             BlockState state = block.getState();
             state.setMetadata(Items.META_ID, new RuntimeMetaStorage<>(plugin,
-                    plugin.getRegistry().forItem(event.getItemInHand().getType(), block)));
+                    plugin.getRegistry().forItem(event.getItemInHand().getType(), block.getLocation())));
             event.getPlayer().sendMessage("You have placed an Electry item!");
         }
     }
@@ -76,7 +76,7 @@ public class ElectricListener extends AbstractListener {
             ElectricBlock block = ((RuntimeMetaStorage<?>) event.getClickedBlock().getMetadata(Items.META_ID).get
                     (0)).value();
             if (block instanceof SolarCell) {
-                event.getPlayer().sendMessage(String.valueOf(((SolarCell) block).getLightLevel()));
+                event.getPlayer().sendMessage("Efficiency: " + ((SolarCell) block).getEfficiency());
             }
             event.getPlayer().sendMessage("That is a " + block.getType().getName());
         }

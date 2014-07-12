@@ -9,8 +9,8 @@ import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -32,8 +32,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public SolarCell create(Block block) {
-            return new SolarCell(block);
+        public SolarCell create(Location location) {
+            return new SolarCell(location);
         }
     },
 
@@ -50,8 +50,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public ElectricFurnace create(Block block) {
-            return new ElectricFurnace(block);
+        public ElectricFurnace create(Location location) {
+            return new ElectricFurnace(location);
         }
     },
 
@@ -69,8 +69,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public RedstoneCable create(Block block) {
-            return new RedstoneCable(block);
+        public RedstoneCable create(Location location) {
+            return new RedstoneCable(location);
         }
     },
 
@@ -87,8 +87,8 @@ public enum DefaultElectric implements Electric {
         }
 
         @Override
-        public TripwireCable create(Block block) {
-            return new TripwireCable(block);
+        public TripwireCable create(Location location) {
+            return new TripwireCable(location);
         }
     };
 

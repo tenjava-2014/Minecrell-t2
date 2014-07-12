@@ -2,11 +2,11 @@ package net.minecrell.tenjava.electry.electrics.block;
 
 import net.minecrell.tenjava.electry.electrics.registry.Electric;
 
-import org.bukkit.block.Block;
+import org.bukkit.Location;
 
 public abstract class ElectricGenerator extends ElectricBlock {
-    protected ElectricGenerator(Block block, Electric type) {
-        super(block, type);
+    protected ElectricGenerator(Location location, Electric type) {
+        super(location, type);
     }
 
     public abstract int getEfficiency();
