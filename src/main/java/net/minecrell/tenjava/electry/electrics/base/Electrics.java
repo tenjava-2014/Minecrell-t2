@@ -5,6 +5,8 @@ import net.minecrell.tenjava.electry.electrics.RedstoneCable;
 import net.minecrell.tenjava.electry.electrics.SolarCell;
 import net.minecrell.tenjava.electry.electrics.TripwireCable;
 
+import java.util.Collections;
+
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
@@ -109,6 +111,7 @@ public enum Electrics {
     protected ItemStack setItemName(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(this.getName());
+        meta.setLore(Collections.singletonList("Electry"));
         item.setItemMeta(meta);
         return item;
     }
