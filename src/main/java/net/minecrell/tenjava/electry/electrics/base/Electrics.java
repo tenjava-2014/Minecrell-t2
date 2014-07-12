@@ -1,4 +1,9 @@
-package net.minecrell.tenjava.electry.electrics;
+package net.minecrell.tenjava.electry.electrics.base;
+
+import net.minecrell.tenjava.electry.electrics.ElectricFurnace;
+import net.minecrell.tenjava.electry.electrics.RedstoneCable;
+import net.minecrell.tenjava.electry.electrics.SolarCell;
+import net.minecrell.tenjava.electry.electrics.TripwireCable;
 
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -41,6 +46,47 @@ public enum Electrics {
                     "III"  // IRON |   IRON   | IRON
             )
                     .setIngredient('I', Material.IRON_INGOT)
+                    .setIngredient('R', Material.REDSTONE);
+        }
+    },
+
+    // TODO: One of the cables should be better
+    REDSTONE_CABLE ("Redstone Cable", RedstoneCable.class) {
+        @Override
+        protected ItemStack createItem() {
+            return setItemName(new ItemStack(Material.REDSTONE));
+        }
+
+        @Override
+        protected Recipe createRecipe(ItemStack item) {
+            ItemStack result = item.clone();
+            result.setAmount(6);
+            return new ShapedRecipe(result).shape(
+                    "RRR", // REDSTONE | REDSTONE | REDSTONE
+                    "SSS", //  STRING  |  STRING  |  STRING
+                    "RRR"  // REDSTONE | REDSTONE | REDSTONE
+            )
+                    .setIngredient('R', Material.REDSTONE)
+                    .setIngredient('S', Material.STRING);
+        }
+    },
+
+    TRIPWIRE_CABE ("Tripwire Cable", TripwireCable.class) {
+        @Override
+        protected ItemStack createItem() {
+            return setItemName(new ItemStack(Material.TRIPWIRE));
+        }
+
+        @Override
+        protected Recipe createRecipe(ItemStack item) {
+            ItemStack result = item.clone();
+            result.setAmount(6);
+            return new ShapedRecipe(result).shape(
+                    "SSS", //  STRING  |  STRING  |  STRING
+                    "RRR", // REDSTONE | REDSTONE | REDSTONE
+                    "SSS"  //  STRING  |  STRING  |  STRING
+            )
+                    .setIngredient('S', Material.STRING)
                     .setIngredient('R', Material.REDSTONE);
         }
     };

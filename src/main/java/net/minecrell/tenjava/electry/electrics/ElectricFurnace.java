@@ -1,4 +1,6 @@
 package net.minecrell.tenjava.electry.electrics;
 
-public class ElectricFurnace extends Electric {
+import net.minecrell.tenjava.electry.electrics.base.ElectricConsumer;
+
+public class ElectricFurnace extends ElectricConsumer {
 }

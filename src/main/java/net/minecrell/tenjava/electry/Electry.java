@@ -1,6 +1,6 @@
 package net.minecrell.tenjava.electry;
 
-import net.minecrell.tenjava.electry.electrics.Electrics;
+import net.minecrell.tenjava.electry.electrics.base.Electrics;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
