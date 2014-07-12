@@ -1,15 +1,44 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.tenjava.entries.Minecrell.t2</groupId> <!-- you're welcome to change this -->
+	<groupId>com.tenjava.entries.Minecrell.t2</groupId>
 	<artifactId>Minecrell-t2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ten.java 2014 July</name>
+	<version>0.1-SNAPSHOT</version>
+	<name>TenJava</name>
 	<description>Contest entry for ten.java 2014 July</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <project.mainPackageName>tenjava</project.mainPackageName>
+        <project.mainClassName>${project.name}</project.mainClassName>
+
+        <project.mainPackage>net.minecrell.${project.mainPackageName}</project.mainPackage>
+        <project.mainClass>${project.mainPackage}.${project.mainClassName}</project.mainClass>
 	</properties>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License (GPL) 3.0</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>minecrell</id>
+            <name>Minecrell</name>
+            <email>dev@minecrell.net</email>
+            <url>https://github.com/Minecrell</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <url>https://github.com/tenjava/Minecrell-t2</url>
+        <connection>scm:git:https://github.com/tenjava/Minecrell-t2.git</connection>
+        <developerConnection>scm:git:https://github.com/tenjava/Minecrell-t2.git</developerConnection>
+    </scm>
 
 	<repositories>
 		<repository>
@@ -22,45 +51,46 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.7.9-R0.2-SNAPSHOT</version>
+			<version>1.7.9-R0.2</version>
 			<scope>provided</scope>
 		</dependency>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>craftbukkit</artifactId>
+            <version>1.7.9-R0.2-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
 		<defaultGoal>clean package</defaultGoal>
-		<finalName>${project.artifactId}</finalName>
+		<finalName>${project.name}-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<!-- Per the rules at http://git.io/lAJgzQ, you're free to change
-					     "1.6" to "1.7" or "1.8" if you wish. This will not impact your score. -->
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
+                    <showDeprecation>true</showDeprecation>
 				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
 			<resource>
-				<targetPath>.</targetPath>
-				<filtering>true</filtering>
-				<directory>${basedir}/src/main/resources</directory>
+				<directory>src/main/resources</directory>
+                <filtering>true</filtering>
 				<includes>
 					<include>*</include>
 				</includes>
 			</resource>
-			<!-- Uncomment to include files (example is LICENSE file) from the project root
 			<resource>
-				<targetPath>.</targetPath>
 				<directory>${basedir}</directory>
 				<includes>
 					<include>LICENSE</include>
 				</includes>
 			</resource>
-			-->
 		</resources>
 	</build>
 </project>
