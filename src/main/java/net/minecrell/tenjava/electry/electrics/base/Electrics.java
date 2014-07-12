@@ -1,5 +1,6 @@
 package net.minecrell.tenjava.electry.electrics.base;
 
+import net.minecrell.tenjava.electry.Items;
 import net.minecrell.tenjava.electry.electrics.ElectricFurnace;
 import net.minecrell.tenjava.electry.electrics.RedstoneCable;
 import net.minecrell.tenjava.electry.electrics.SolarCell;
@@ -111,8 +112,7 @@ public enum Electrics {
     protected ItemStack setItemName(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(this.getName());
-        meta.setLore(Collections.singletonList("Electry"));
-        item.setItemMeta(meta);
+        item.setItemMeta(Items.electrify(meta));
         return item;
     }
 
