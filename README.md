@@ -1,5 +1,4 @@
-Minecrell's ten.java submission
-==============================
+# Electry - Minecrell's ten.java submission
 
 [![ten.java](https://cdn.mediacru.sh/hu4CJqRD7AiB.svg)](https://tenjava.com/)
 
@@ -12,8 +11,7 @@ This is a submission for the 2014 ten.java contest.
 
 ---------------------------------------
 
-Compilation
------------
+## Compilation
 
 - Download & Install [Maven 3](http://maven.apache.org/download.html)
 - Clone the repository: `git clone https://github.com/tenjava/Minecrell-t2.git`
@@ -23,8 +21,7 @@ Maven will download all required dependencies and build a ready-for-use plugin p
 
 ---------------------------------------
 
-Usage
------
+## Usage (TODO)
 
 1. Install plugin
 2. Do things with it

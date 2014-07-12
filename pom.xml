@@ -4,18 +4,18 @@
     <groupId>com.tenjava.entries.Minecrell.t2</groupId>
     <artifactId>Minecrell-t2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>TenJava</name>
-    <description>Contest entry for ten.java 2014 July</description>
+    <name>Electry</name>
+    <description>TODO</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <project.author>Minecrell &lt;https://github.com/Minecrell&gt;</project.author>
 
-        <project.pluginPackageName>tenjava</project.pluginPackageName>
+        <project.pluginPackageName>electry</project.pluginPackageName>
         <project.pluginClassName>${project.name}</project.pluginClassName>
 
-        <project.pluginPackage>net.minecrell.${project.pluginPackageName}</project.pluginPackage>
+        <project.pluginPackage>net.minecrell.tenjava.${project.pluginPackageName}</project.pluginPackage>
         <project.pluginClass>${project.pluginPackage}.${project.pluginClassName}</project.pluginClass>
     </properties>
 
