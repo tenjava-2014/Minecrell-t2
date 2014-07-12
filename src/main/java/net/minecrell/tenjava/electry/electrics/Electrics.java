@@ -1,6 +1,7 @@
 package net.minecrell.tenjava.electry.electrics;
 
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -88,5 +89,10 @@ public enum Electrics {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    public static void registerRecipes(Server server) {
+        for (Electrics electric : values())
+            server.addRecipe(electric.getRecipe());
     }
 }
