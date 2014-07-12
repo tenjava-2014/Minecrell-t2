@@ -58,7 +58,7 @@ public enum Electrics {
         }
     },
 
-    TRIPWIRE_CABE ("Tripwire Cable", TripwireCable.class, Material.STRING) {
+    TRIPWIRE_CABLE ("Tripwire Cable", TripwireCable.class, Material.STRING) {
         @Override
         protected Recipe createRecipe(Material material) {
             return new ShapedRecipe(createItem(this, new ItemStack(material, 6))).shape(
