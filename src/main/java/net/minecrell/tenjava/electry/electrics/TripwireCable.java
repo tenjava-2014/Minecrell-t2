@@ -5,8 +5,7 @@ import net.minecrell.tenjava.electry.electrics.registry.DefaultElectric;
 import net.minecrell.tenjava.electry.electrics.registry.Electric;
 
 public class TripwireCable extends ElectricCable {
-    @Override
-    public Electric getType() {
-        return DefaultElectric.TRIPWIRE_CABLE;
+    public TripwireCable() {
+        super(DefaultElectric.TRIPWIRE_CABLE);
     }
 }

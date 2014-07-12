@@ -5,8 +5,7 @@ import net.minecrell.tenjava.electry.electrics.registry.DefaultElectric;
 import net.minecrell.tenjava.electry.electrics.registry.Electric;
 
 public class RedstoneCable extends ElectricCable {
-    @Override
-    public Electric getType() {
-        return DefaultElectric.REDSTONE_CABLE;
+    public RedstoneCable() {
+        super(DefaultElectric.REDSTONE_CABLE);
     }
 }

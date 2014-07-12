@@ -7,12 +7,11 @@ import net.minecrell.tenjava.electry.electrics.registry.Electric;
 public class SolarCell extends ElectricGenerator {
     private int lightLevel;
 
-    public int getLightLevel() {
-        return lightLevel;
+    public SolarCell(Electric type) {
+        super(DefaultElectric.SOLAR_CELL);
     }
 
-    @Override
-    public Electric getType() {
-        return DefaultElectric.SOLAR_CELL;
+    public int getLightLevel() {
+        return lightLevel;
     }
 }

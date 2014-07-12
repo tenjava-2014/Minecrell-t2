@@ -3,9 +3,16 @@ package net.minecrell.tenjava.electry.electrics.block;
 import net.minecrell.tenjava.electry.electrics.registry.Electric;
 
 public abstract class ElectricBlock {
-    public abstract Electric getType();
+    private final Electric type;
+    private transient boolean enabled; // Don't write this to the configuration
 
-    private boolean enabled;
+    protected ElectricBlock(Electric type) {
+        this.type = type;
+    }
+
+    public final Electric getType() {
+        return type;
+    }
 
     public boolean isEnabled() {
         return enabled;
