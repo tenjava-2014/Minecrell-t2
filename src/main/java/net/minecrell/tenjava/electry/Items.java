@@ -11,15 +11,17 @@ import org.bukkit.inventory.meta.ItemMeta;
 public final class Items {
     private Items() {}
 
-    private static final String ITEM_IDENTIFICATION = "Electry";
+    public static final String ITEM_ID = "Electry";
+    public static final String META_ID = ITEM_ID + "Storage";
+
 
     public static ItemStack createItem(Electrics electric, ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(electric.getName());
         List<String> lore = meta.getLore();
         if (lore != null)
-            lore.add(0, ITEM_IDENTIFICATION);
-        else lore = Collections.singletonList(ITEM_IDENTIFICATION);
+            lore.add(0, ITEM_ID);
+        else lore = Collections.singletonList(ITEM_ID);
         meta.setLore(lore);
         item.setItemMeta(meta);
         return item;
@@ -28,6 +30,6 @@ public final class Items {
     public static boolean isElectryItem(ItemStack item) {
         if (item == null) return false;
         ItemMeta meta = item.getItemMeta();
-        return meta.hasLore() && meta.getLore().get(0).equals(ITEM_IDENTIFICATION);
+        return meta.hasLore() && meta.getLore().get(0).equals(ITEM_ID);
     }
 }
