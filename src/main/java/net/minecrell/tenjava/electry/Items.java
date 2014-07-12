@@ -1,5 +1,6 @@
 package net.minecrell.tenjava.electry;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.bukkit.inventory.ItemStack;
@@ -11,13 +12,17 @@ public final class Items {
     private static final String ITEM_IDENTIFICATION = "Electry";
 
     public static ItemMeta electrify(ItemMeta meta) {
-        meta.getLore().add(0, ITEM_IDENTIFICATION);
+        List<String> lore = meta.getLore();
+        if (lore != null)
+            lore.add(0, ITEM_IDENTIFICATION);
+        else lore = Collections.singletonList(ITEM_IDENTIFICATION)
+        meta.setLore(lore);
         return meta;
     }
 
     public static boolean isElectryItem(ItemStack item) {
         if (item == null) return false;
-        List<String> lore = item.getItemMeta().getLore();
-        return lore.size() > 0 && lore.get(0).equals(ITEM_IDENTIFICATION);
+        ItemMeta meta = item.getItemMeta();
+        return meta.hasLore() && meta.getLore().get(0).equals(ITEM_IDENTIFICATION);
     }
 }
