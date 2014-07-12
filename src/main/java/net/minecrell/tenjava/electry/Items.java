@@ -1,5 +1,7 @@
 package net.minecrell.tenjava.electry;
 
+import net.minecrell.tenjava.electry.electrics.base.Electrics;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -11,13 +13,16 @@ public final class Items {
 
     private static final String ITEM_IDENTIFICATION = "Electry";
 
-    public static ItemMeta electrify(ItemMeta meta) {
+    public static ItemStack createItem(Electrics electric, ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(electric.getName());
         List<String> lore = meta.getLore();
         if (lore != null)
             lore.add(0, ITEM_IDENTIFICATION);
         else lore = Collections.singletonList(ITEM_IDENTIFICATION);
         meta.setLore(lore);
-        return meta;
+        item.setItemMeta(meta);
+        return item;
     }
 
     public static boolean isElectryItem(ItemStack item) {
