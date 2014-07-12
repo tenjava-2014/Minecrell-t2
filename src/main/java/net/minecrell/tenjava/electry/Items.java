@@ -15,7 +15,7 @@ public final class Items {
         List<String> lore = meta.getLore();
         if (lore != null)
             lore.add(0, ITEM_IDENTIFICATION);
-        else lore = Collections.singletonList(ITEM_IDENTIFICATION)
+        else lore = Collections.singletonList(ITEM_IDENTIFICATION);
         meta.setLore(lore);
         return meta;
     }
