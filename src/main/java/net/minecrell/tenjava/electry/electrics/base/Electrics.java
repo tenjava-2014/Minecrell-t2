@@ -6,8 +6,6 @@ import net.minecrell.tenjava.electry.electrics.RedstoneCable;
 import net.minecrell.tenjava.electry.electrics.SolarCell;
 import net.minecrell.tenjava.electry.electrics.TripwireCable;
 
-import java.util.Collections;
-
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
