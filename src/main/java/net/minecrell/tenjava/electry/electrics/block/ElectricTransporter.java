@@ -1,4 +1,4 @@
 package net.minecrell.tenjava.electry.electrics.block;
 
-public class ElectricTransporter extends ElectricBlock {
+public abstract class ElectricTransporter extends ElectricBlock {
 }
