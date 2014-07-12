@@ -10,11 +10,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <project.mainPackageName>tenjava</project.mainPackageName>
-        <project.mainClassName>${project.name}</project.mainClassName>
+        <project.author>Minecrell &lt;https://github.com/Minecrell&gt;</project.author>
 
-        <project.mainPackage>net.minecrell.${project.mainPackageName}</project.mainPackage>
-        <project.mainClass>${project.mainPackage}.${project.mainClassName}</project.mainClass>
+        <project.pluginPackageName>tenjava</project.pluginPackageName>
+        <project.pluginClassName>${project.name}</project.pluginClassName>
+
+        <project.pluginPackage>net.minecrell.${project.pluginPackageName}</project.pluginPackage>
+        <project.pluginClass>${project.pluginPackage}.${project.pluginClassName}</project.pluginClass>
     </properties>
 
     <licenses>
