@@ -1,7 +1,7 @@
 package net.minecrell.tenjava.electry.electrics.registry;
 
 import net.minecrell.tenjava.electry.Electry;
-import net.minecrell.tenjava.electry.electrics.base.ElectricBlock;
+import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 
 import java.util.Collection;
 import java.util.Collections;

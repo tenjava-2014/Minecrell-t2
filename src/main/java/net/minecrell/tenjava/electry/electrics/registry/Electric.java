@@ -1,6 +1,6 @@
 package net.minecrell.tenjava.electry.electrics.registry;
 
-import net.minecrell.tenjava.electry.electrics.base.ElectricBlock;
+import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.Recipe;

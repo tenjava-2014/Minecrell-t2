@@ -1,6 +1,6 @@
 package net.minecrell.tenjava.electry.storage;
 
-import net.minecrell.tenjava.electry.electrics.base.ElectricBlock;
+import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.Plugin;

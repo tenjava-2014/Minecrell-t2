@@ -2,13 +2,14 @@ package net.minecrell.tenjava.electry.listeners;
 
 import net.minecrell.tenjava.electry.Electry;
 import net.minecrell.tenjava.electry.Items;
-import net.minecrell.tenjava.electry.electrics.RedstoneCable;
+import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 import net.minecrell.tenjava.electry.storage.ElectricMetaStorage;
 
 import org.bukkit.Chunk;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.event.world.WorldSaveEvent;
@@ -63,5 +64,15 @@ public class ElectricListener extends AbstractListener {
         for (Chunk chunk : event.getWorld().getLoadedChunks())
             save(chunk);
         plugin.getLogger().info("Done!");
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onBlockClick(PlayerInteractEvent event) {
+        if (!event.hasBlock()) return;
+        if (event.getClickedBlock().hasMetadata(Items.META_ID)) {
+            ElectricBlock block = ((ElectricMetaStorage<?>) event.getClickedBlock().getMetadata(Items.META_ID).get
+                    (0)).value();
+            event.getPlayer().sendMessage("That is a " + block.getType().getName());
+        }
     }
 }

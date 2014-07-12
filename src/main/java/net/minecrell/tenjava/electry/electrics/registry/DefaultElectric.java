@@ -4,7 +4,7 @@ import net.minecrell.tenjava.electry.electrics.ElectricFurnace;
 import net.minecrell.tenjava.electry.electrics.RedstoneCable;
 import net.minecrell.tenjava.electry.electrics.SolarCell;
 import net.minecrell.tenjava.electry.electrics.TripwireCable;
-import net.minecrell.tenjava.electry.electrics.base.ElectricBlock;
+import net.minecrell.tenjava.electry.electrics.block.ElectricBlock;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
