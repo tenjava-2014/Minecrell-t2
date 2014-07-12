@@ -7,7 +7,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public enum Electrics {
-    SOLAR_CELL("Solar Cell") {
+    SOLAR_CELL("Solar Cell", SolarCell.class) {
         @Override
         protected ItemStack createItem() {
             ItemStack item = new ItemStack(Material.DAYLIGHT_DETECTOR);
@@ -31,11 +31,14 @@ public enum Electrics {
     };
 
     private final String name;
+    private final Class<? extends Electric> electric;
+
     private final ItemStack item;
     private final Recipe recipe;
 
-    Electrics(String name) {
+    Electrics(String name, Class<? extends Electric> electric) {
         this.name = name;
+        this.electric = electric;
         this.item = this.createItem();
         this.recipe = this.createRecipe(item);
     }
