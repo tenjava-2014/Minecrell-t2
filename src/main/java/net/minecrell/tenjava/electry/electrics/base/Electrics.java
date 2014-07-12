@@ -74,7 +74,7 @@ public enum Electrics {
     TRIPWIRE_CABE ("Tripwire Cable", TripwireCable.class) {
         @Override
         protected ItemStack createItem() {
-            return setItemName(new ItemStack(Material.TRIPWIRE));
+            return setItemName(new ItemStack(Material.STRING));
         }
 
         @Override
